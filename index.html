@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Dear Hamster ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;display:flex;
+  justify-content:center;align-items:center;
+  text-align:center;color:white;overflow:hidden;
+  font-family:Arial,sans-serif;
+  background:radial-gradient(circle at top,#54245f,#170f30 60%,#080817);
+}
+.card{padding:25px;width:100%;max-width:500px;animation:fade 1s}
+.heart{font-size:65px;animation:beat 1s infinite}
+h1{font-size:clamp(35px,9vw,55px);color:#ffadd3}
+.date{font-size:25px;letter-spacing:5px;color:#ffe0a3}
+#number{font-size:clamp(100px,30vw,170px);color:#ffe0a3;
+text-shadow:0 0 35px #ff79c6;animation:pop .8s infinite alternate}
+#wish{display:none}
+p{line-height:1.8;color:#f4dcef}
+button{
+ border:0;border-radius:30px;padding:14px 25px;
+ background:linear-gradient(90deg,#ffe0a3,#ff91c5);
+ font-size:16px;font-weight:bold;cursor:pointer;margin-top:15px
+}
+@keyframes beat{50%{transform:scale(1.18)}}
+@keyframes pop{to{transform:scale(1.08);opacity:.8}}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.star{position:absolute;pointer-events:none;animation:fall 3s linear forwards}
+@keyframes fall{to{transform:translateY(100vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart">💗</div>
+
+  <div id="countdown">
+    <p>GET READY, MY DEAR HAMSTER 🐹</p>
+    <div id="number">10</div>
+    <p class="date">21 OCTOBER</p>
+    <p>A little surprise from your Ullu 🦉</p>
+  </div>
+
+  <div id="wish">
+    <div class="heart">🎂💗</div>
+    <h1>Happy Birthday,<br>My Dear Hamster!</h1>
+    <div class="date">21 OCTOBER</div>
+    <p>
+      Meri pyaari Hamster ❤️<br>
+      I hope your day is filled with happiness,
+      love, laughter and beautiful memories.<br>
+      You will always be someone very special to me.
+      Keep smiling, birthday girl! 🌷
+    </p>
+    <h2 style="color:#ffadd3">Forever your Ullu 🦉❤️</h2>
+    <button onclick="celebrate()">Make a Wish ✨</button>
+  </div>
+</div>
+
+<script>
+let n=10;
+const number=document.getElementById("number");
+const countdown=document.getElementById("countdown");
+const wish=document.getElementById("wish");
+
+const timer=setInterval(()=>{
+  n--;
+  if(n>=0){
+    number.textContent=n;
+    number.style.animation="none";
+    void number.offsetWidth;
+    number.style.animation="pop .8s infinite alternate";
+  }else{
+    clearInterval(timer);
+    countdown.style.display="none";
+    wish.style.display="block";
+    celebrate();
+  }
+},1000);
+
+function celebrate(){
+  for(let i=0;i<60;i++){
+    const s=document.createElement("span");
+    s.className="star";
+    s.textContent=["💗","✨","💕","🌸","🎉"][Math.floor(Math.random()*5)];
+    s.style.left=Math.random()*100+"vw";
+    s.style.top="-30px";
+    s.style.fontSize=(15+Math.random()*20)+"px";
+    s.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),5000);
+  }
+}
+</script>
+</body>
+</html>
